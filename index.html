@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Cache-Control" content="no-store">
+  <meta http-equiv="Pragma" content="no-cache">
+  <title>xo2.ai</title>
+  <link rel="stylesheet" href="./style.css?v=20260628-2">
+</head>
+<body class="settings-collapsed">
+  <main class="app-shell">
+    <header class="brand" aria-label="xo2.ai">
+      <img class="logo-mark logo-x" src="./x.svg" alt="X">
+      <img class="logo-mark logo-o" src="./o.svg" alt="O">
+      <span class="logo-two">2</span><span class="logo-ai">.ai</span>
+    </header>
+
+    <section class="game-layout" aria-label="Ultimate Tic Tac Toe game">
+      <aside class="move-panel" aria-label="Move log">
+        <ol id="moves"></ol>
+      </aside>
+
+      <section class="board-column">
+        <div class="board-wrap">
+          <div id="board" aria-label="Ultimate Tic Tac Toe board"></div>
+        </div>
+
+        <div id="eval-bar" class="eval-bar" title="X/O/draw unavailable">
+          <span id="eval-x" class="eval-segment eval-x"></span>
+          <span id="eval-o" class="eval-segment eval-o"></span>
+          <span id="eval-draw" class="eval-segment eval-draw"></span>
+        </div>
+      </section>
+
+      <aside id="settings-panel" class="settings-panel">
+        <button id="settings-toggle" class="settings-toggle" type="button" aria-controls="settings-panel" aria-expanded="false" title="Bot settings">
+          ⚙
+        </button>
+
+        <h1>Bot Settings</h1>
+
+        <p id="status" class="status-readout">Loading model...</p>
+        <p id="eval" class="status-readout"></p>
+
+        <div id="controls">
+          <button id="new-human" type="button">You first</button>
+          <button id="new-ai" type="button">AI first</button>
+
+          <label class="range-control">
+            <span class="control-heading">
+              <span>AI visits</span>
+              <output id="visits-value" for="visits">512</output>
+            </span>
+            <input id="visits" type="range" min="1" max="2048" step="1" value="512">
+          </label>
+
+          <label class="check-row">
+            <input id="use-gumbel" type="checkbox" checked>
+            <span>Gumbel root search</span>
+          </label>
+
+          <label>
+            <span>AI randomness</span>
+            <select id="temperature">
+              <option value="0">none</option>
+              <option value="0.3">low</option>
+              <option value="0.7">medium</option>
+            </select>
+          </label>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.23.0/dist/ort.min.js"></script>
+  <script src="./uttt.js?v=20260628-2"></script>
+</body>
+</html>
